@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CS2 道具点位库</title>
+<link rel="icon" href="favicon.png" />
+<link rel="stylesheet" href="assets/theme.css?v=cs2w22" />
+<link rel="stylesheet" href="assets/style.css?v=cs2w22" />
+</head>
+<body>
+
+<!-- 背景视效层：极光 / 战术网格 / 扫描线 + 高光横扫 / 噪点 / 鼠标光斑 / 换肤闪光 -->
+<div class="fx" aria-hidden="true">
+  <i class="fx-aurora"></i>
+  <i class="fx-grid"></i>
+  <i class="fx-grain"></i>
+  <i class="fx-sweep"></i>
+  <i class="fx-spot" id="fxSpot"></i>
+  <i class="fx-flash" id="fxFlash"></i>
+</div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">CS2</span>
+    <span class="brand-name">道具点位库</span>
+  </div>
+
+  <div class="searchbox">
+    <svg class="search-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20.5 20.5l-4.2-4.2"/></svg>
+    <input id="searchInput" type="text" placeholder="搜索 道具名 / 用法…" autocomplete="off" spellcheck="false" />
+    <button id="searchClear" class="search-clear" title="清除搜索" hidden>×</button>
+  </div>
+
+  <div class="topbar-actions">
+    <button id="btnTheme" class="btn ghost theme-btn" title="悬停展开主题配色（快捷键 T）"><i class="swatch"></i><span id="themeNow">鎏金夜航</span></button>
+    <button id="btnClean" class="btn ghost" title="删除 resource\props 里没有被任何道具引用的图片">清理图片</button>
+    <button id="btnList" class="btn ghost" title="查看本图全部点位">清单</button>
+    <button id="btnAdd" class="btn primary">＋ 添加道具点位</button>
+  </div>
+</header>
+
+<div id="serverBanner" class="banner" hidden></div>
+
+<main class="viewport" id="viewport">
+  <div class="stage" id="stage">
+    <img id="mapImg" class="map-img" alt="" draggable="false" />
+    <div class="layer" id="markerLayer"></div>
+    <div class="layer" id="pickLayer"></div>
+  </div>
+  <div class="viewport-hint" id="viewportHint" hidden></div>
+  <div class="map-loading" id="mapLoading">地图加载中…</div>
+</main>
+
+<aside class="rail rail-left">
+  <div class="rail-head">地图</div>
+  <div class="rail-body" id="mapList"></div>
+</aside>
+
+<aside class="rail rail-right">
+  <div class="rail-head">阵营</div>
+  <div class="seg" id="sideSeg">
+    <button type="button" data-side="all" class="on">全部</button>
+    <button type="button" data-side="T">T</button>
+    <button type="button" data-side="CT">CT</button>
+  </div>
+
+  <div class="legend">
+    <div class="lg-row"><i class="lg-dot t"></i><span>T 阵营道具点</span></div>
+    <div class="lg-row"><i class="lg-dot ct"></i><span>CT 阵营道具点</span></div>
+    <div class="lg-row"><i class="lg-dot mix"></i><span>T / CT 共用点位</span></div>
+  </div>
+
+  <div class="rail-sep"></div>
+  <label class="sw"><input type="checkbox" id="tgNames" /><span>显示点位名</span></label>
+
+  <div class="rail-sep"></div>
+  <button type="button" id="btnFit" class="btn ghost sm">重置视图</button>
+  <div class="zoom-read" id="zoomRead">100%</div>
+</aside>
+
+<footer class="statusbar">
+  <span id="statMap">—</span>
+  <span class="sb-sep"></span>
+  <span id="statCount">—</span>
+  <span class="sb-spacer"></span>
+  <span class="sb-ver" id="statVer">cs2-w22</span>
+  <span id="statSaved" class="sb-saved"></span>
+</footer>
+
+<!-- 主题配色（悬停下拉，跟着「主题」按钮走；只列主题，不放别的控件） -->
+<section class="float-panel theme-panel" id="themePanel" hidden>
+  <div class="fp-body" id="themeBody"></div>
+</section>
+
+<!-- 点位清单（悬浮面板） -->
+<section class="float-panel" id="listPanel" hidden>
+
+  <header class="fp-head">
+    <h2 id="listTitle">点位清单</h2>
+    <button type="button" class="x" data-close="listPanel" title="关闭">×</button>
+  </header>
+  <div class="fp-body" id="listBody"></div>
+</section>
+
+<!-- 编辑 / 添加（右侧停靠，不遮挡地图，方便点选坐标） -->
+<section class="dock" id="editDock" hidden>
+  <header class="dock-head">
+    <h2 id="editTitle">添加道具点位</h2>
+    <button type="button" class="x" data-close="editDock" title="关闭">×</button>
+  </header>
+  <div class="dock-body" id="editBody"></div>
+  <footer class="dock-foot">
+    <button type="button" class="btn ghost" data-close="editDock">取消</button>
+    <button type="button" class="btn primary" id="btnSaveSpot">保存点位</button>
+  </footer>
+</section>
+
+<!-- 道具查看器：左侧道具列表 + 使用方式，右侧大图（关闭：点遮罩或按 ESC） -->
+<div class="modal" id="detailModal" hidden>
+  <div class="modal-card viewer">
+    <div class="modal-body" id="detailBody"></div>
+    <footer class="modal-foot" id="detailFoot"></footer>
+  </div>
+</div>
+
+<!-- 从已有图片中选择 -->
+<div class="modal" id="pickerModal" hidden>
+  <div class="modal-card">
+    <header class="modal-head">
+      <h2>从 resource\props 里挑图片</h2>
+      <button type="button" class="x" data-close="pickerModal" title="关闭">×</button>
+    </header>
+    <div class="modal-body" id="pickerBody"></div>
+    <footer class="modal-foot">
+      <span class="foot-hint" id="pickerHint"></span>
+      <button type="button" class="btn ghost" data-close="pickerModal">取消</button>
+      <button type="button" class="btn primary" id="btnPickerOk">加入</button>
+    </footer>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" hidden>
+  <img id="lightboxImg" alt="" />
+  <div class="lb-cap" id="lightboxCap"></div>
+  <button type="button" class="lb-close" id="lightboxClose" title="关闭">×</button>
+</div>
+
+<!-- 清理未被引用的图片（二次确认） -->
+<div class="modal" id="cleanModal" hidden>
+  <div class="modal-card wide">
+    <header class="modal-head">
+      <h2>清理未引用的图片</h2>
+      <button type="button" class="x" data-close="cleanModal" title="关闭">×</button>
+    </header>
+    <div class="modal-body" id="cleanBody"></div>
+    <footer class="modal-foot">
+      <span class="foot-hint" id="cleanHint"></span>
+      <button type="button" class="btn ghost" data-close="cleanModal">取消</button>
+      <button type="button" class="btn danger" id="btnCleanOk">删除这些图片</button>
+    </footer>
+  </div>
+</div>
+
+<div class="tooltip" id="tooltip" hidden></div>
+<div class="toast" id="toast" hidden></div>
+
+<input type="file" id="edFile" accept="image/*" multiple hidden />
+
+<script src="assets/app.js?v=cs2w22"></script>
+</body>
+</html>

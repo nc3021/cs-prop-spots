@@ -1,0 +1,56 @@
+name: Bug 报告
+description: 页面报错、数据丢失、图片显示异常等
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        提之前可以先看一眼 [README 的「常见问题」](../../#常见问题)，有些问题是设计上的取舍，不是 bug。
+        描述越具体，越容易修。
+  - type: textarea
+    id: what
+    attributes:
+      label: 现象
+      description: 发生了什么？期望应该是什么？
+      placeholder: 例如：点「保存点位」后提示写入失败，data.json 里没变化。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: |
+        1. 打开 http://127.0.0.1:8778/
+        2. 切到「沙二」
+        3. 点某个点位 → 编辑 → 改名字 → 保存
+        4. 见错误提示
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: 运行方式
+      options:
+        - 标准方式：python server.py + 127.0.0.1:8778
+        - 改动过代码后自建的方式（端口、反代、静态托管等）
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: 环境
+      description: 操作系统 + 浏览器版本 + Python 版本
+      placeholder: Windows 11 / Chrome 141 / Python 3.13
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: 日志与截图
+      description: |
+        服务端日志在仓库根目录的 `server.log`；前端报错请贴 Console（F12）里的报错行。
+        截图可以直接拖进来。
+      render: text
+    validations:
+      required: false

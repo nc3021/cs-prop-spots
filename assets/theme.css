@@ -1,0 +1,728 @@
+/* ============================================================
+   CS2 道具点位库 —— 主题令牌 + 视效层
+   ------------------------------------------------------------
+   7 套深色主题，全部通过 html[data-theme="xxx"] 切换：
+     aurum    鎏金夜航（默认）  T 金 / CT 蓝      主色 金
+     neon     霓虹废墟          T 柠檬黄 / CT 电青  主色 品红
+     verdant  密林潜行          T 芥末黄 / CT 松青  主色 橄榄
+     magma    熔岩裂谷          T 炽黄 / CT 钢蓝    主色 熔岩红
+     glacier  极地冰川          T 沙金 / CT 墨黑    主色 冰青
+     violet   紫电风暴          T 金黄 / CT 电蓝    主色 紫
+     toxic    生化禁区          T 放射黄 / CT 荧光绿 主色 毒紫
+   ------------------------------------------------------------
+   配色规则（2026-10-04 定）：
+     · T 方在每一套主题里都必须是「黄色系」——阵营辨识度优先；
+     · CT 方取黄以外的色系（蓝 / 青 / 绿 / 墨黑）；
+     · --accent 是每套主题的签名色，只驱动 UI 主色（按钮 / 边框 / 高光 /
+       背景极光），不参与阵营语义；阵营着色一律只走 --t / --ct。
+   本文件在 style.css 之前加载，只提供「令牌 + 背景视效」，
+   组件样式全部写在 style.css 里，通过 var() 取用这里的令牌。
+   ============================================================ */
+
+/* ---------------- 默认主题：鎏金夜航 ---------------- */
+
+:root,
+html[data-theme="aurum"] {
+  /* 底色 */
+  --bg:           #080b11;
+  --bg-soft:      #0e131d;
+  --bg-rgb:       8, 11, 17;
+  --chrome:       rgba(11, 16, 25, .74);
+  --glass-1:      rgba(13, 18, 28, .70);
+  --glass-2:      rgba(20, 27, 41, .76);
+
+  /* 面板 / 卡片 */
+  --surface-1:    #111724;
+  --surface-2:    #141b29;
+  --surface-3:    #151c2a;
+  --inset:        #0a0e15;
+  --panel:        rgba(16, 22, 33, .90);
+  --panel-2:      rgba(22, 29, 43, .96);
+
+  /* 线 / 字 */
+  --line:         rgba(255, 255, 255, .085);
+  --line-2:       rgba(255, 255, 255, .16);
+  --txt:          #e7ecf6;
+  --txt-2:        #cfd8e8;
+  --dim:          #8c99b0;
+  --dim-2:        #626f85;
+
+  /* T 阵营 */
+  --t:            #f2b53c;
+  --t-rgb:        242, 181, 60;
+  --t-deep:       #a9701a;
+  --t-orb:        radial-gradient(circle at 34% 28%, #ffe79b 0%, #f2b53c 46%, #a9701a 100%);
+  --t-ink:        #241a03;
+  --t-soft:       #ffdf9d;
+
+  /* CT 阵营 */
+  --ct:           #4a9eff;
+  --ct-rgb:       74, 158, 255;
+  --ct-deep:      #1a518e;
+  --ct-orb:       radial-gradient(circle at 34% 28%, #bfe0ff 0%, #4a9eff 46%, #1a518e 100%);
+  --ct-ink:       #06192e;
+  --ct-soft:      #bfdcff;
+
+  /* 强调色 */
+  --accent:       #f2b53c;
+  --accent-rgb:   242, 181, 60;
+  --accent-ink:   #2a1c02;
+  --accent-soft:  #ffe0a3;
+  --brand-grad:   linear-gradient(180deg, #ffcb5e, #eeaa2c);
+  --btn-grad:     linear-gradient(180deg, #ffc957, #eda92a);
+  --btn-grad-h:   linear-gradient(180deg, #ffd472, #f5b536);
+
+  /* 语义色 */
+  --ok:           #5fd39a;
+  --danger:       #ff6b6b;
+  --danger-rgb:   255, 107, 107;
+  --danger-soft:  #ffc9c9;
+
+  /* 浮层 */
+  --pop-bg:       rgba(8, 11, 17, .84);
+  --pop-bg2:      rgba(12, 17, 26, .98);
+  --scrim:        rgba(3, 5, 9, .82);
+  --scrim-2:      rgba(2, 4, 7, .93);
+
+  /* 分段控件选中态 */
+  --seg-on-bg:    rgba(255, 255, 255, .88);
+  --seg-on-ink:   #10151d;
+
+  /* 背景极光三色 */
+  --glow-a-rgb:   74, 158, 255;
+  --glow-b-rgb:   242, 181, 60;
+  --glow-c-rgb:   122, 84, 255;
+  --grid-line:    rgba(255, 255, 255, .075);
+
+  /* 光影 */
+  --shadow:       0 18px 50px rgba(0, 0, 0, .55);
+  --shadow-lg:    0 30px 90px rgba(0, 0, 0, .62);
+  --sheen:        rgba(255, 255, 255, .14);
+}
+
+/* ---------------- 霓虹废墟 ---------------- */
+/* 赛博夜城：靛蓝近黑的底，T 电光柠檬黄，CT 电青，主色霓虹品红 */
+
+html[data-theme="neon"] {
+  --bg:           #06081a;
+  --bg-soft:      #0b0e26;
+  --bg-rgb:       6, 8, 26;
+  --chrome:       rgba(8, 11, 30, .72);
+  --glass-1:      rgba(11, 15, 38, .70);
+  --glass-2:      rgba(17, 22, 52, .76);
+
+  --surface-1:    #111634;
+  --surface-2:    #151b3d;
+  --surface-3:    #1a2047;
+  --inset:        #05061a;
+  --panel:        rgba(15, 20, 46, .90);
+  --panel-2:      rgba(21, 27, 58, .96);
+
+  --line:         rgba(255, 255, 255, .09);
+  --line-2:       rgba(255, 255, 255, .18);
+  --txt:          #eceaff;
+  --txt-2:        #cfcbf5;
+  --dim:          #8f8dc4;
+  --dim-2:        #63619a;
+
+  /* T：电光柠檬黄 */
+  --t:            #f5ff3d;
+  --t-rgb:        245, 255, 61;
+  --t-deep:       #8f9a00;
+  --t-orb:        radial-gradient(circle at 34% 28%, #fbffb0 0%, #f5ff3d 46%, #8f9a00 100%);
+  --t-ink:        #1f2200;
+  --t-soft:       #f7ff9c;
+
+  /* CT：电青 */
+  --ct:           #00e5ff;
+  --ct-rgb:       0, 229, 255;
+  --ct-deep:      #00707f;
+  --ct-orb:       radial-gradient(circle at 34% 28%, #a8f5ff 0%, #00e5ff 46%, #00707f 100%);
+  --ct-ink:       #00232a;
+  --ct-soft:      #a6f2ff;
+
+  /* 主色：霓虹品红 */
+  --accent:       #ff2e88;
+  --accent-rgb:   255, 46, 136;
+  --accent-ink:   #2b0014;
+  --accent-soft:  #ff9cc7;
+  --brand-grad:   linear-gradient(180deg, #ff6aa6, #ff1f7d);
+  --btn-grad:     linear-gradient(180deg, #ff5f9f, #f61571);
+  --btn-grad-h:   linear-gradient(180deg, #ff83b5, #ff3f92);
+
+  --ok:           #3de8a0;
+  --danger:       #ff4d6d;
+  --danger-rgb:   255, 77, 109;
+  --danger-soft:  #ffc2ce;
+
+  --pop-bg:       rgba(6, 8, 26, .86);
+  --pop-bg2:      rgba(10, 13, 34, .98);
+  --scrim:        rgba(2, 3, 12, .84);
+  --scrim-2:      rgba(1, 2, 9, .94);
+
+  --seg-on-bg:    rgba(255, 255, 255, .90);
+  --seg-on-ink:   #0b0e20;
+
+  --glow-a-rgb:   255, 46, 136;
+  --glow-b-rgb:   245, 255, 61;
+  --glow-c-rgb:   0, 229, 255;
+  --grid-line:    rgba(0, 229, 255, .10);
+
+  --shadow:       0 18px 50px rgba(0, 0, 0, .60), 0 0 44px -22px rgba(255, 46, 136, .85);
+  --shadow-lg:    0 30px 90px rgba(0, 0, 0, .68), 0 0 60px -24px rgba(0, 229, 255, .70);
+  --sheen:        rgba(255, 255, 255, .18);
+}
+
+/* ---------------- 密林潜行 ---------------- */
+/* 雨林战术：墨绿底的隐蔽感，T 芥末沙黄，CT 松青绿，主色橄榄 */
+
+html[data-theme="verdant"] {
+  --bg:           #06130d;
+  --bg-soft:      #0b1c14;
+  --bg-rgb:       6, 19, 13;
+  --chrome:       rgba(8, 22, 16, .74);
+  --glass-1:      rgba(10, 26, 19, .72);
+  --glass-2:      rgba(15, 34, 25, .78);
+
+  --surface-1:    #0f2018;
+  --surface-2:    #13261d;
+  --surface-3:    #162b21;
+  --inset:        #050f0b;
+  --panel:        rgba(13, 30, 22, .90);
+  --panel-2:      rgba(18, 38, 28, .96);
+
+  --line:         rgba(255, 255, 255, .08);
+  --line-2:       rgba(255, 255, 255, .15);
+  --txt:          #e6efe6;
+  --txt-2:        #cddccf;
+  --dim:          #8aa694;
+  --dim-2:        #5e7a68;
+
+  /* T：芥末沙黄 */
+  --t:            #d19a22;
+  --t-rgb:        209, 154, 34;
+  --t-deep:       #74520a;
+  --t-orb:        radial-gradient(circle at 34% 28%, #f0da9c 0%, #d19a22 46%, #74520a 100%);
+  --t-ink:        #241a02;
+  --t-soft:       #ecd79c;
+
+  /* CT：松青绿 */
+  --ct:           #36a88e;
+  --ct-rgb:       54, 168, 142;
+  --ct-deep:      #0f5b4a;
+  --ct-orb:       radial-gradient(circle at 34% 28%, #a8e3d3 0%, #36a88e 46%, #0f5b4a 100%);
+  --ct-ink:       #03211a;
+  --ct-soft:      #a8e3d3;
+
+  /* 主色：橄榄绿 */
+  --accent:       #8fbf4a;
+  --accent-rgb:   143, 191, 74;
+  --accent-ink:   #13220a;
+  --accent-soft:  #d2e8ab;
+  --brand-grad:   linear-gradient(180deg, #a8d06a, #7fae3c);
+  --btn-grad:     linear-gradient(180deg, #a5cd66, #7cab39);
+  --btn-grad-h:   linear-gradient(180deg, #b8dd80, #91c04d);
+
+  --ok:           #5fd39a;
+  --danger:       #e06b5a;
+  --danger-rgb:   224, 107, 90;
+  --danger-soft:  #f3c2b8;
+
+  --pop-bg:       rgba(6, 19, 13, .86);
+  --pop-bg2:      rgba(10, 23, 17, .98);
+  --scrim:        rgba(3, 8, 5, .84);
+  --scrim-2:      rgba(2, 6, 4, .94);
+
+  --seg-on-bg:    rgba(255, 255, 255, .88);
+  --seg-on-ink:   #0c1811;
+
+  --glow-a-rgb:   143, 191, 74;
+  --glow-b-rgb:   209, 154, 34;
+  --glow-c-rgb:   54, 168, 142;
+  --grid-line:    rgba(143, 191, 74, .10);
+
+  --shadow:       0 18px 50px rgba(0, 0, 0, .55);
+  --shadow-lg:    0 30px 90px rgba(0, 0, 0, .62);
+  --sheen:        rgba(255, 255, 255, .12);
+}
+
+/* ---------------- 熔岩裂谷 ---------------- */
+/* 火山裂隙：焦褐红的底，T 炽金黄，CT 冷钢蓝，主色熔岩红（撞色） */
+
+html[data-theme="magma"] {
+  --bg:           #170806;
+  --bg-soft:      #220c09;
+  --bg-rgb:       23, 8, 6;
+  --chrome:       rgba(26, 10, 8, .74);
+  --glass-1:      rgba(31, 13, 10, .72);
+  --glass-2:      rgba(42, 18, 14, .78);
+
+  --surface-1:    #24110d;
+  --surface-2:    #2b1511;
+  --surface-3:    #301813;
+  --inset:        #110505;
+  --panel:        rgba(37, 17, 14, .90);
+  --panel-2:      rgba(47, 22, 18, .96);
+
+  --line:         rgba(255, 255, 255, .09);
+  --line-2:       rgba(255, 255, 255, .17);
+  --txt:          #f7e8e2;
+  --txt-2:        #e4c9c1;
+  --dim:          #b48b83;
+  --dim-2:        #825f58;
+
+  /* T：炽金黄 */
+  --t:            #ffc61a;
+  --t-rgb:        255, 198, 26;
+  --t-deep:       #9c6e00;
+  --t-orb:        radial-gradient(circle at 34% 28%, #ffe9a3 0%, #ffc61a 46%, #9c6e00 100%);
+  --t-ink:        #2a1c00;
+  --t-soft:       #ffe9a3;
+
+  /* CT：冷钢蓝 */
+  --ct:           #4f9de0;
+  --ct-rgb:       79, 157, 224;
+  --ct-deep:      #1b5687;
+  --ct-orb:       radial-gradient(circle at 34% 28%, #bcdcf8 0%, #4f9de0 46%, #1b5687 100%);
+  --ct-ink:       #04192c;
+  --ct-soft:      #bcdcf8;
+
+  /* 主色：熔岩红 */
+  --accent:       #f04a24;
+  --accent-rgb:   240, 74, 36;
+  --accent-ink:   #2a0c00;
+  --accent-soft:  #ffc0a3;
+  --brand-grad:   linear-gradient(180deg, #ff7a4a, #e03e16);
+  --btn-grad:     linear-gradient(180deg, #ff7a4a, #dd3c14);
+  --btn-grad-h:   linear-gradient(180deg, #ff9761, #f5521f);
+
+  --ok:           #63d3a0;
+  --danger:       #ff5a4d;
+  --danger-rgb:   255, 90, 77;
+  --danger-soft:  #ffcbc5;
+
+  --pop-bg:       rgba(23, 8, 6, .86);
+  --pop-bg2:      rgba(32, 14, 11, .98);
+  --scrim:        rgba(9, 3, 2, .84);
+  --scrim-2:      rgba(6, 2, 1, .94);
+
+  --seg-on-bg:    rgba(255, 255, 255, .90);
+  --seg-on-ink:   #1c0b07;
+
+  --glow-a-rgb:   240, 74, 36;
+  --glow-b-rgb:   255, 198, 26;
+  --glow-c-rgb:   150, 30, 24;
+  --grid-line:    rgba(240, 74, 36, .11);
+
+  --shadow:       0 18px 50px rgba(0, 0, 0, .60), 0 0 44px -22px rgba(240, 74, 36, .85);
+  --shadow-lg:    0 30px 90px rgba(0, 0, 0, .66), 0 0 60px -24px rgba(255, 140, 40, .65);
+  --sheen:        rgba(255, 255, 255, .16);
+}
+
+/* ---------------- 极地冰川 ---------------- */
+/* 冰原白夜：冰蓝底的冷冽，T 暖沙金，CT 极夜墨黑（黑系），主色冰青 */
+
+html[data-theme="glacier"] {
+  --bg:           #05121d;
+  --bg-soft:      #0a1b2b;
+  --bg-rgb:       5, 18, 29;
+  --chrome:       rgba(7, 20, 32, .74);
+  --glass-1:      rgba(9, 25, 40, .70);
+  --glass-2:      rgba(14, 34, 52, .76);
+
+  --surface-1:    #0d1f30;
+  --surface-2:    #112639;
+  --surface-3:    #142c42;
+  --inset:        #040e18;
+  --panel:        rgba(12, 30, 45, .90);
+  --panel-2:      rgba(17, 38, 56, .96);
+
+  --line:         rgba(255, 255, 255, .095);
+  --line-2:       rgba(255, 255, 255, .17);
+  --txt:          #e7f3fd;
+  --txt-2:        #cce0f0;
+  --dim:          #8aa7bf;
+  --dim-2:        #5e7c94;
+
+  /* T：暖沙金 */
+  --t:            #ffd166;
+  --t-rgb:        255, 209, 102;
+  --t-deep:       #a9761c;
+  --t-orb:        radial-gradient(circle at 34% 28%, #fff0c8 0%, #ffd166 46%, #a9761c 100%);
+  --t-ink:        #2a1f05;
+  --t-soft:       #ffe8b8;
+
+  /* CT：极夜墨黑（黑系）—— --ct 是实心填充（近黑），
+     --ct-rgb 刻意取偏亮的冷灰蓝，专供发散光/描边/脉冲环，
+     否则纯黑描边在深底上会整个消失，CT 点位就没有呼吸感了。 */
+  --ct:           #2e3a4e;
+  --ct-rgb:       122, 152, 190;
+  --ct-deep:      #101823;
+  --ct-orb:       radial-gradient(circle at 34% 28%, #cfe0f5 0%, #46597a 40%, #131a26 100%);
+  --ct-ink:       #e9f2ff;
+  --ct-soft:      #a9c2dc;
+
+  /* 主色：冰青 */
+  --accent:       #a9efff;
+  --accent-rgb:   169, 239, 255;
+  --accent-ink:   #03222c;
+  --accent-soft:  #d8f7ff;
+  --brand-grad:   linear-gradient(180deg, #d8f7ff, #93e6ff);
+  --btn-grad:     linear-gradient(180deg, #c4f2ff, #8adcff);
+  --btn-grad-h:   linear-gradient(180deg, #e0faff, #a6ebff);
+
+  --ok:           #54d9b4;
+  --danger:       #ff6e7f;
+  --danger-rgb:   255, 110, 127;
+  --danger-soft:  #ffc9d1;
+
+  --pop-bg:       rgba(5, 18, 29, .86);
+  --pop-bg2:      rgba(9, 24, 38, .98);
+  --scrim:        rgba(2, 7, 12, .84);
+  --scrim-2:      rgba(1, 5, 9, .94);
+
+  --seg-on-bg:    rgba(255, 255, 255, .90);
+  --seg-on-ink:   #0a1a26;
+
+  --glow-a-rgb:   169, 239, 255;
+  --glow-b-rgb:   255, 217, 138;
+  --glow-c-rgb:   90, 140, 255;
+  --grid-line:    rgba(169, 239, 255, .11);
+
+  --shadow:       0 18px 50px rgba(0, 0, 0, .52), 0 0 44px -24px rgba(169, 239, 255, .75);
+  --shadow-lg:    0 30px 90px rgba(0, 0, 0, .60), 0 0 60px -26px rgba(169, 239, 255, .65);
+  --sheen:        rgba(255, 255, 255, .18);
+}
+
+/* ---------------- 紫电风暴 ---------------- */
+/* 雷暴云顶：紫黑的底，T 亮金黄，CT 电蓝，主色紫电 */
+
+html[data-theme="violet"] {
+  --bg:           #0b0722;
+  --bg-soft:      #130c30;
+  --bg-rgb:       11, 7, 34;
+  --chrome:       rgba(15, 9, 36, .74);
+  --glass-1:      rgba(18, 11, 42, .70);
+  --glass-2:      rgba(25, 17, 56, .76);
+
+  --surface-1:    #181132;
+  --surface-2:    #1d153b;
+  --surface-3:    #221947;
+  --inset:        #08041b;
+  --panel:        rgba(21, 15, 46, .90);
+  --panel-2:      rgba(29, 21, 60, .96);
+
+  --line:         rgba(255, 255, 255, .095);
+  --line-2:       rgba(255, 255, 255, .18);
+  --txt:          #ede8ff;
+  --txt-2:        #d4ccf6;
+  --dim:          #9a8fc6;
+  --dim-2:        #6f6498;
+
+  /* T：亮金黄 */
+  --t:            #ffdd4d;
+  --t-rgb:        255, 221, 77;
+  --t-deep:       #a37600;
+  --t-orb:        radial-gradient(circle at 34% 28%, #fff3b8 0%, #ffdd4d 46%, #a37600 100%);
+  --t-ink:        #2a2000;
+  --t-soft:       #fff3b8;
+
+  /* CT：电蓝 */
+  --ct:           #4d9bff;
+  --ct-rgb:       77, 155, 255;
+  --ct-deep:      #1a528f;
+  --ct-orb:       radial-gradient(circle at 34% 28%, #bcdaff 0%, #4d9bff 46%, #1a528f 100%);
+  --ct-ink:       #04182e;
+  --ct-soft:      #bcdaff;
+
+  /* 主色：紫电 */
+  --accent:       #a56bff;
+  --accent-rgb:   165, 107, 255;
+  --accent-ink:   #16042a;
+  --accent-soft:  #d9c2ff;
+  --brand-grad:   linear-gradient(180deg, #c79cff, #9a5cff);
+  --btn-grad:     linear-gradient(180deg, #c79cff, #9a5cff);
+  --btn-grad-h:   linear-gradient(180deg, #d6b3ff, #ac74ff);
+
+  --ok:           #4fe0b0;
+  --danger:       #ff5f7a;
+  --danger-rgb:   255, 95, 122;
+  --danger-soft:  #ffc6d2;
+
+  --pop-bg:       rgba(11, 7, 34, .86);
+  --pop-bg2:      rgba(16, 10, 38, .98);
+  --scrim:        rgba(4, 2, 12, .85);
+  --scrim-2:      rgba(3, 1, 9, .95);
+
+  --seg-on-bg:    rgba(255, 255, 255, .90);
+  --seg-on-ink:   #140b2c;
+
+  --glow-a-rgb:   165, 107, 255;
+  --glow-b-rgb:   255, 221, 77;
+  --glow-c-rgb:   77, 155, 255;
+  --grid-line:    rgba(165, 107, 255, .11);
+
+  --shadow:       0 18px 50px rgba(0, 0, 0, .60), 0 0 44px -22px rgba(165, 107, 255, .85);
+  --shadow-lg:    0 30px 90px rgba(0, 0, 0, .68), 0 0 60px -24px rgba(165, 107, 255, .80);
+  --sheen:        rgba(255, 255, 255, .18);
+}
+
+/* ---------------- 生化禁区 ---------------- */
+/* 泄漏现场：毒绿黑的底，T 放射性黄，CT 荧光绿，主色毒紫 */
+
+html[data-theme="toxic"] {
+  --bg:           #07140b;
+  --bg-soft:      #0c1d10;
+  --bg-rgb:       7, 20, 11;
+  --chrome:       rgba(9, 23, 13, .74);
+  --glass-1:      rgba(11, 27, 16, .72);
+  --glass-2:      rgba(16, 35, 21, .78);
+
+  --surface-1:    #0e2013;
+  --surface-2:    #122618;
+  --surface-3:    #152b1c;
+  --inset:        #051008;
+  --panel:        rgba(12, 29, 18, .90);
+  --panel-2:      rgba(17, 37, 24, .96);
+
+  --line:         rgba(255, 255, 255, .09);
+  --line-2:       rgba(255, 255, 255, .17);
+  --txt:          #e8f5dc;
+  --txt-2:        #cee4c0;
+  --dim:          #92ab7d;
+  --dim-2:        #647a56;
+
+  /* T：放射性黄 */
+  --t:            #ffe01a;
+  --t-rgb:        255, 224, 26;
+  --t-deep:       #9c8200;
+  --t-orb:        radial-gradient(circle at 34% 28%, #fff5a3 0%, #ffe01a 46%, #9c8200 100%);
+  --t-ink:        #262200;
+  --t-soft:       #fff5a3;
+
+  /* CT：荧光绿 */
+  --ct:           #39ff14;
+  --ct-rgb:       57, 255, 20;
+  --ct-deep:      #14800a;
+  --ct-orb:       radial-gradient(circle at 34% 28%, #b6ffa3 0%, #39ff14 46%, #14800a 100%);
+  --ct-ink:       #052600;
+  --ct-soft:      #b6ffa3;
+
+  /* 主色：毒紫 */
+  --accent:       #b026ff;
+  --accent-rgb:   176, 38, 255;
+  --accent-ink:   #1e0033;
+  --accent-soft:  #e2b8ff;
+  --brand-grad:   linear-gradient(180deg, #c86bff, #a31ff0);
+  --btn-grad:     linear-gradient(180deg, #c86bff, #a31ff0);
+  --btn-grad-h:   linear-gradient(180deg, #d68cff, #b54cff);
+
+  --ok:           #4fe08c;
+  --danger:       #ff4d4d;
+  --danger-rgb:   255, 77, 77;
+  --danger-soft:  #ffc4c4;
+
+  --pop-bg:       rgba(7, 20, 11, .86);
+  --pop-bg2:      rgba(11, 25, 15, .98);
+  --scrim:        rgba(3, 9, 5, .84);
+  --scrim-2:      rgba(2, 6, 3, .94);
+
+  --seg-on-bg:    rgba(255, 255, 255, .90);
+  --seg-on-ink:   #0c1a10;
+
+  --glow-a-rgb:   176, 38, 255;
+  --glow-b-rgb:   255, 224, 26;
+  --glow-c-rgb:   57, 255, 20;
+  --grid-line:    rgba(57, 255, 20, .10);
+
+  --shadow:       0 18px 50px rgba(0, 0, 0, .60), 0 0 44px -22px rgba(176, 38, 255, .80);
+  --shadow-lg:    0 30px 90px rgba(0, 0, 0, .68), 0 0 60px -24px rgba(57, 255, 20, .55);
+  --sheen:        rgba(255, 255, 255, .16);
+}
+
+/* ============================================================
+   背景视效层：极光 / 网格 / 扫描线 / 噪点 / 鼠标光斑 / 换肤闪光
+   —— 全部只用 transform + opacity 做动画，走 GPU 合成，不触发重排
+   ============================================================ */
+
+html { background: var(--bg); }
+
+.fx {
+  position: fixed;
+  inset: 0;
+  /* 注意：这里必须是 0 而不是负数 —— 负 z-index 会被 body 自己的
+     背景色盖住（body 背景属于「流内块级后代」，排在负 z-index 之后才绘制）。
+     z-index:0 让它压在 body 底色之上、又被后面所有定位 UI（视口/侧栏/顶栏）盖住。 */
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+}
+.fx > i { position: absolute; display: block; }
+
+/* --- 极光：三大色团缓慢漂移 ---
+   注意：这里刻意不用 filter:blur()。径向渐变本身已经是平滑衰减的，
+   加一层整屏 blur 只会让合成器每帧重算一张 2400×1400 的模糊贴图
+   （实测：软件光栅下 15.6fps → 去掉模糊后 34.4fps，肉眼几乎无差别）。 */
+.fx-aurora {
+  inset: -22%;
+  background:
+    radial-gradient(42% 38% at 14% 20%, rgba(var(--glow-a-rgb), .58), rgba(var(--glow-a-rgb), .16) 46%, transparent 70%),
+    radial-gradient(38% 36% at 86% 16%, rgba(var(--glow-b-rgb), .48), rgba(var(--glow-b-rgb), .13) 46%, transparent 72%),
+    radial-gradient(48% 44% at 54% 94%, rgba(var(--glow-c-rgb), .42), rgba(var(--glow-c-rgb), .11) 48%, transparent 74%);
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  animation: fxDrift 42s ease-in-out infinite alternate;
+}
+@keyframes fxDrift {
+  0%   { transform: translate3d(-2%, -1%, 0) scale(1.03) rotate(0deg); }
+  50%  { transform: translate3d(3%, 2.5%, 0) scale(1.10) rotate(4deg); }
+  100% { transform: translate3d(-1.5%, 3%, 0) scale(1.06) rotate(-3deg); }
+}
+
+/* --- 战术网格：缓慢平移（translate 而非 background-position）--- */
+.fx-grid {
+  inset: -80px;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 46px 46px, 46px 46px;
+  -webkit-mask-image: radial-gradient(closest-side at 50% 48%, #000 18%, transparent 86%);
+  mask-image: radial-gradient(closest-side at 50% 48%, #000 18%, transparent 86%);
+  will-change: transform;
+  animation: fxGrid 78s linear infinite;
+}
+@keyframes fxGrid {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(46px, 46px, 0); }
+}
+
+/* --- 扫描线 + 噪点：合成一层（少一层整屏合成 = 少一份每帧开销）---
+   噪点透明度直接烘进 SVG 里，省掉 mix-blend-mode:overlay
+   （底下极光每帧都在动，混合模式会让整屏重新混合一次）。 */
+.fx-grain {
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(180deg,
+      transparent 0 3px,
+      rgba(var(--accent-rgb), .05) 3px 4px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.11'/%3E%3C/svg%3E");
+}
+/* --- 高光横扫：一道斜向光带缓慢扫过屏幕（纯 transform，合成层动画）--- */
+.fx-sweep {
+  left: -10%;
+  right: -10%;
+  height: 24vh;
+  top: -32vh;
+  background: linear-gradient(180deg, transparent, rgba(var(--accent-rgb), .11) 56%, transparent);
+  will-change: transform, opacity;
+  animation: fxSweep 9s cubic-bezier(.5, 0, .5, 1) infinite;
+}
+@keyframes fxSweep {
+  0%        { transform: translate3d(0, 0, 0); opacity: 0; }
+  8%        { opacity: 1; }
+  92%       { opacity: 1; }
+  100%      { transform: translate3d(0, 165vh, 0); opacity: 0; }
+}
+
+/* --- 噪点：静态颗粒，给纯色底加质感 --- */
+.fx-noise {
+  inset: 0;
+  opacity: .045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- 鼠标光斑：跟随指针，rAF 节流后只改 transform ---
+   同样不用 filter:blur()，靠多层透明度渐变做出柔和边缘（每个 rAF 都在动，
+   加模糊等于每帧重算一张 640×640 的模糊贴图）。 */
+.fx-spot {
+  width: 640px; height: 640px;
+  left: -320px; top: -320px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(var(--accent-rgb), .15) 0%,
+    rgba(var(--accent-rgb), .08) 26%,
+    rgba(var(--glow-a-rgb), .05) 48%,
+    transparent 72%);
+  opacity: 0;
+  transition: opacity .45s ease;
+  will-change: transform;
+}
+.fx-spot.on { opacity: 1; }
+
+/* --- 换肤瞬间的扩散闪光 --- */
+.fx-flash {
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(var(--accent-rgb), .28), transparent 62%);
+  opacity: 0;
+}
+.fx-flash.go { animation: fxFlash .62s ease-out; }
+@keyframes fxFlash {
+  0%   { opacity: 0; transform: scale(1.04); }
+  22%  { opacity: 1; }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+/* --- 换肤过渡：短暂给整页加上颜色过渡，让配色平滑滑过去 --- */
+html.theming,
+html.theming *,
+html.theming *::before,
+html.theming *::after {
+  transition:
+    background-color .5s ease,
+    background-image .5s ease,
+    border-color .5s ease,
+    color .4s ease,
+    box-shadow .5s ease,
+    opacity .4s ease !important;
+}
+html.theming .fx-aurora,
+html.theming .fx-grid,
+html.theming .fx-spot,
+html.theming .fx-sweep { transition: none !important; }
+
+/* --- 降低动效偏好：关掉一切动画 --- */
+@media (prefers-reduced-motion: reduce) {
+  .fx-aurora, .fx-grid, .fx-sweep { animation: none !important; }
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ============================================================
+   视效档位：全效 / 精简
+   —— 老机器或投屏时切到「精简」，一键卸掉极光、毛玻璃与脉冲环
+   ============================================================ */
+
+html[data-fx="lite"] .fx { display: none; }
+html[data-fx="lite"] .map-img { animation: none; }
+html[data-fx="lite"] .marker::before,
+html[data-fx="lite"] .fx-sweep { display: none; }
+html[data-fx="lite"] .marker .mk-dot,
+html[data-fx="lite"] .marker.found .mk-dot { animation: none; }
+html[data-fx="lite"] .topbar,
+html[data-fx="lite"] .statusbar,
+html[data-fx="lite"] .rail,
+html[data-fx="lite"] .float-panel,
+html[data-fx="lite"] .dock,
+html[data-fx="lite"] .modal-card,
+html[data-fx="lite"] .modal,
+html[data-fx="lite"] .lightbox,
+html[data-fx="lite"] .tooltip,
+html[data-fx="lite"] .toast,
+html[data-fx="lite"] .marker .mk-name,
+html[data-fx="lite"] .map-loading {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html[data-fx="lite"] .rail,
+html[data-fx="lite"] .float-panel,
+html[data-fx="lite"] .dock,
+html[data-fx="lite"] .modal-card { background: var(--surface-2); }
+html[data-fx="lite"] .topbar,
+html[data-fx="lite"] .statusbar { background: var(--surface-1); }
+html[data-fx="lite"] .tooltip { background: var(--pop-bg2); }
+html[data-fx="lite"] .toast { background: var(--surface-3); }

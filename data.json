@@ -1,0 +1,1227 @@
+{
+  "meta": {
+    "version": 3,
+    "updated": "2026-10-24T08:47:46.659Z",
+    "app": "cs2-props"
+  },
+  "mapOrder": [
+    "dust2",
+    "ancient",
+    "inferno",
+    "anubis",
+    "mirage",
+    "train",
+    "cache",
+    "vertigo",
+    "nuke",
+    "office",
+    "overpass"
+  ],
+  "spots": [
+    {
+      "id": "s_muf7pyb51qria",
+      "map": "dust2",
+      "x": 6.24,
+      "y": 48.08,
+      "props": [
+        {
+          "id": "p_muf7pyb509eid",
+          "side": "T",
+          "type": "smoke",
+          "name": "B门烟",
+          "imgs": [
+            "resource/props/B门烟-2.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "在左侧房顶柱子尖的小窗口里，在右上侧横线的上五分之二处，需要挨着线"
+        }
+      ]
+    },
+    {
+      "id": "s_mufe83xs1fugc",
+      "map": "dust2",
+      "x": 20.26,
+      "y": 50.12,
+      "props": [
+        {
+          "id": "p_mufe83xs0cm6v",
+          "side": "T",
+          "type": "flash",
+          "name": "B包启动闪",
+          "imgs": [
+            "resource/props/B包启动闪-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "s_mufee6vc1zjx6",
+      "map": "dust2",
+      "x": 31.18,
+      "y": 24.34,
+      "props": [
+        {
+          "id": "p_mufee6vc0ikzr",
+          "side": "CT",
+          "type": "flash",
+          "name": "B门闪",
+          "imgs": [
+            "resource/props/B门闪-2.jpg"
+          ],
+          "keys": [
+            "right"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "描点应该在绑带与箱上连接点之间，但不能挨着绑带与连接点，其次尽量不要在横线上，而是应该在横线下一点点"
+        }
+      ]
+    },
+    {
+      "id": "s_mufehc9e3m6x8",
+      "map": "dust2",
+      "x": 26.31,
+      "y": 14.29,
+      "props": [
+        {
+          "id": "p_mufehc9d2lyn6",
+          "side": "CT",
+          "type": "fire",
+          "name": "死点火",
+          "imgs": [
+            "resource/props/死点火-2.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "木板中间偏左一点（木板中间与左边灰色墙沿的中点），在线上或下方都可以"
+        },
+        {
+          "id": "p_muy72ordp1ubw",
+          "side": "CT",
+          "type": "smoke",
+          "name": "狗洞过点烟",
+          "imgs": [
+            "resource/props/狗洞过点烟-1.jpg"
+          ],
+          "keys": [
+            "right"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "描点：抬头中央无砖块区域的右侧第一块砖块的中间"
+        }
+      ]
+    },
+    {
+      "id": "s_mufejh4m1sata",
+      "map": "ancient",
+      "x": 81.77,
+      "y": 71.82,
+      "props": [
+        {
+          "id": "p_mufejh4m07jcd",
+          "side": "T",
+          "type": "smoke",
+          "name": "二道烟",
+          "imgs": [
+            "resource/props/二道烟-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "最中间最粗的凸起石柱与横梁的内交叉点"
+        },
+        {
+          "id": "p_mulezs2n9953i",
+          "side": "T",
+          "type": "smoke",
+          "name": "一道烟",
+          "imgs": [
+            "resource/props/一道烟-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "两个X之间向下一点"
+        },
+        {
+          "id": "p_mulf7ep0a1me9",
+          "side": "T",
+          "type": "fire",
+          "name": "忍者位火",
+          "imgs": [
+            "resource/props/忍者位火-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "左门的右侧门沿向上1cm"
+        },
+        {
+          "id": "p_mulfe47i0kbdn",
+          "side": "T",
+          "type": "flash",
+          "name": "B包辅助闪",
+          "imgs": [
+            "resource/props/B包辅助闪-2.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": ""
+        },
+        {
+          "id": "p_mv6pggfd076u7",
+          "side": "T",
+          "type": "smoke",
+          "name": "黑屋烟",
+          "imgs": [
+            "resource/props/黑屋烟-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "描点：中间凸起的左边第二颗牙齿的左端点"
+        }
+      ]
+    },
+    {
+      "id": "s_mulbbhe11ege9",
+      "map": "dust2",
+      "x": 42.57,
+      "y": 42.57,
+      "props": [
+        {
+          "id": "p_mulbbhe10mt2m",
+          "side": "CT",
+          "type": "flash",
+          "name": "中路反清闪",
+          "imgs": [
+            "resource/props/中路反清闪-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "连线交点"
+        }
+      ]
+    },
+    {
+      "id": "s_mulbm6fs3vxpt",
+      "map": "dust2",
+      "x": 55.16,
+      "y": 65.35,
+      "props": [
+        {
+          "id": "p_mulbm6fs24cp0",
+          "side": "T",
+          "type": "smoke",
+          "name": "中门烟",
+          "imgs": [
+            "resource/props/中门烟-1.jpg",
+            "resource/props/中门烟-2.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "瞄住污渍贴墙站，瞄住右边窗口的右上角"
+        },
+        {
+          "id": "p_mulbowcv4omok",
+          "side": "T",
+          "type": "smoke",
+          "name": "B门烟",
+          "imgs": [
+            "resource/props/B门烟-3.jpg",
+            "resource/props/B门烟-4.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "瞄住污渍贴墙站，瞄住电线下方横杆的左侧端点"
+        }
+      ]
+    },
+    {
+      "id": "s_mulbwwy66jp5z",
+      "map": "dust2",
+      "x": 63.43,
+      "y": 79.98,
+      "props": [
+        {
+          "id": "p_mulbwwy65u3hv",
+          "side": "T",
+          "type": "flash",
+          "name": "A大（辅助）闪",
+          "imgs": [
+            "resource/props/A大（辅助）闪-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "站位：在站拐角的附近或紧贴（容错很大）"
+        }
+      ]
+    },
+    {
+      "id": "s_mulbzv48889v8",
+      "map": "dust2",
+      "x": 71.82,
+      "y": 58.75,
+      "props": [
+        {
+          "id": "p_mulbzv487oiu5",
+          "side": "T",
+          "type": "flash",
+          "name": "自助A大闪",
+          "imgs": [
+            "resource/props/自助A大闪-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "贴住墙角"
+        }
+      ]
+    },
+    {
+      "id": "s_muy3b8wi7qenq",
+      "map": "dust2",
+      "x": 65.85,
+      "y": 39.95,
+      "props": [
+        {
+          "id": "p_muy3b8wi68qx2",
+          "side": "T",
+          "type": "smoke",
+          "name": "A小过点烟",
+          "imgs": [
+            "resource/props/A小过点烟-2.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "描点：水平方向需要在缝隙中间；竖直方向需要在凸起的中间；需要精确"
+        }
+      ]
+    },
+    {
+      "id": "s_muy3moqr976ef",
+      "map": "dust2",
+      "x": 60.28,
+      "y": 29.24,
+      "props": [
+        {
+          "id": "p_muy3moqr855og",
+          "side": "both",
+          "type": "fire",
+          "name": "包点斜坡火",
+          "imgs": [
+            "resource/props/二箱火-2.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "描点：\n水平方向为木箱中间金属扣的右侧第一个污渍左端点；\n竖直方向为木箱金属扣的下端点；\n需要A小过点烟，描点需精确。"
+        },
+        {
+          "id": "p_muy445r6ag5xy",
+          "side": "both",
+          "type": "flash",
+          "name": "A小过点闪凹槽闪",
+          "imgs": [
+            "resource/props/A小过点闪-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "s_muy4d0k5c650y",
+      "map": "dust2",
+      "x": 65.94,
+      "y": 26.28,
+      "props": [
+        {
+          "id": "p_muy4d0k5bjox3",
+          "side": "CT",
+          "type": "fire",
+          "name": "包点火",
+          "imgs": [
+            "resource/props/包点火-1.jpg",
+            "resource/props/包点火-2.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "站位：不需要准确，只需要挨着凸起的钢柱；\n描点：最高点房檐的右侧房檐，需准确。"
+        },
+        {
+          "id": "p_muy4ex3wdxcuu",
+          "side": "CT",
+          "type": "he",
+          "name": "包点雷",
+          "imgs": [
+            "resource/props/包点雷-1.jpg",
+            "resource/props/包点雷-2.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "站位：不需要准确，只需要挨着凸起的钢柱；\n描点：最高点房檐的右侧房檐，需准确。"
+        }
+      ]
+    },
+    {
+      "id": "s_muy4puemf9uhg",
+      "map": "dust2",
+      "x": 66.11,
+      "y": 21.14,
+      "props": [
+        {
+          "id": "p_muy4pueme1hus",
+          "side": "CT",
+          "type": "flash",
+          "name": "窗户闪",
+          "imgs": [
+            "resource/props/窗户闪-1.jpg",
+            "resource/props/窗户闪-2.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "描点：窗户内黑色阴影的中间\n站位：贴住钢柱中央，最好精确，否则闪可能从窗户中落出"
+        }
+      ]
+    },
+    {
+      "id": "s_muy50yyrhlwmu",
+      "map": "dust2",
+      "x": 9.46,
+      "y": 40.24,
+      "props": [
+        {
+          "id": "p_muy50yyrglol5",
+          "side": "T",
+          "type": "smoke",
+          "name": "B洞过点烟",
+          "imgs": [
+            "resource/props/B洞过点烟-1.jpg",
+            "resource/props/B洞过点烟-2.jpg"
+          ],
+          "keys": [
+            "both"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "描点：灰色竖线与帆布的交点\n站位需准确。"
+        }
+      ]
+    },
+    {
+      "id": "s_muy598p3jv1h4",
+      "map": "dust2",
+      "x": 31.67,
+      "y": 26.13,
+      "props": [
+        {
+          "id": "p_muy598p3i1nrq",
+          "side": "CT",
+          "type": "smoke",
+          "name": "B点反清烟",
+          "imgs": [
+            "resource/props/B点反清烟-2.jpg"
+          ],
+          "keys": [
+            "right"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "s_muy5dayilogbu",
+      "map": "dust2",
+      "x": 25.76,
+      "y": 21.13,
+      "props": [
+        {
+          "id": "p_muy5dayikilp2",
+          "side": "CT",
+          "type": "fire",
+          "name": "白车火",
+          "imgs": [
+            "resource/props/白车火-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "站位：抵住门框；\n描点：墙缝与石墙的交点；\n容错极大。"
+        }
+      ]
+    },
+    {
+      "id": "s_muy65a9unf0ln",
+      "map": "dust2",
+      "x": 49.29,
+      "y": 31.93,
+      "props": [
+        {
+          "id": "p_muy65a9um2t6d",
+          "side": "CT",
+          "type": "he",
+          "name": "A小过点雷",
+          "imgs": [
+            "resource/props/雷道具-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": ""
+        },
+        {
+          "id": "p_muy66m95orm63",
+          "side": "CT",
+          "type": "fire",
+          "name": "A小防rua雷",
+          "imgs": [
+            "resource/props/A小防rua雷-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "s_mv3db1aw1h1gc",
+      "map": "ancient",
+      "x": 79.98,
+      "y": 61.51,
+      "props": [
+        {
+          "id": "p_mv3db1aw0sitz",
+          "side": "T",
+          "type": "fire",
+          "name": "二道火",
+          "imgs": [
+            "resource/props/火道具-3.jpg",
+            "resource/props/火道具-4.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "描点：\n蹲下描点数字9下方中间或偏左"
+        },
+        {
+          "id": "p_mv3dc27c2v6pc",
+          "side": "T",
+          "type": "he",
+          "name": "台阶雷",
+          "imgs": [
+            "resource/props/台阶雷-1.jpg",
+            "resource/props/台阶雷-2.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "描点：\n蹲下描点数字9下方中间或偏左"
+        }
+      ]
+    },
+    {
+      "id": "s_mv3dmms44s1d7",
+      "map": "ancient",
+      "x": 59.35,
+      "y": 54.92,
+      "props": [
+        {
+          "id": "p_mv3dmms43kdmw",
+          "side": "CT",
+          "type": "flash",
+          "name": "B小闪",
+          "imgs": [
+            "resource/props/B小闪-1.jpg"
+          ],
+          "keys": [
+            "right"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "描点：白色污渍左侧端点"
+        }
+      ]
+    },
+    {
+      "id": "s_mv3e053d6lami",
+      "map": "ancient",
+      "x": 18.94,
+      "y": 38.79,
+      "props": [
+        {
+          "id": "p_mv3e053d5inic",
+          "side": "T",
+          "type": "flash",
+          "name": "A包前点单向闪",
+          "imgs": [
+            "resource/props/A包前点闪-1.jpg",
+            "resource/props/A包前点闪-2.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "站位：站在最近一块玻璃渣上，容错很大"
+        }
+      ]
+    },
+    {
+      "id": "s_mv3e5hf982q8t",
+      "map": "ancient",
+      "x": 15.95,
+      "y": 37.47,
+      "props": [
+        {
+          "id": "p_mv3e5hf97ki2z",
+          "side": "T",
+          "type": "flash",
+          "name": "二箱后闪",
+          "imgs": [
+            "resource/props/二箱后闪-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [
+            "fwd"
+          ],
+          "note": "站位：门框附近即可，容错很大\n描点：二箱左上角，偏高一点爆闪快，容错很大"
+        }
+      ]
+    },
+    {
+      "id": "s_mv3efnysax366",
+      "map": "inferno",
+      "x": 52.52,
+      "y": 10.55,
+      "props": [
+        {
+          "id": "p_mv3efnys9q57n",
+          "side": "CT",
+          "type": "flash",
+          "name": "B包前点反清闪",
+          "imgs": [
+            "resource/props/B包前点反清闪-1.jpg",
+            "resource/props/B包前点反清闪-2.jpg"
+          ],
+          "keys": [
+            "right"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "描点：左侧第一个红色花纹沙袋的中间或偏左，容错很大\n站位：贴住柱子最外层端点即可，容错很大"
+        }
+      ]
+    },
+    {
+      "id": "s_mv3eycw1cwrzo",
+      "map": "inferno",
+      "x": 48.92,
+      "y": 44.36,
+      "props": [
+        {
+          "id": "p_mv3eycw1bnz0t",
+          "side": "T",
+          "type": "smoke",
+          "name": "棺材烟",
+          "imgs": [
+            "resource/props/棺材烟-2.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "描点：房顶沙袋顶端端点竖直方向与楼梯从下到上第二根踏板水平方向的交点"
+        },
+        {
+          "id": "p_mv3f20q1dh4lj",
+          "side": "T",
+          "type": "smoke",
+          "name": "警家花坛烟",
+          "imgs": [
+            "resource/props/警家花坛烟-1.jpg"
+          ],
+          "keys": [
+            "both"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "描点：右侧第二根栏杆下侧端点"
+        },
+        {
+          "id": "p_mv3fg5rfeqq9c",
+          "side": "T",
+          "type": "fire",
+          "name": "一二箱火",
+          "imgs": [
+            "resource/props/一二箱火-1.jpg"
+          ],
+          "keys": [
+            "both"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "描点：水管左侧灰色污渍的上端点偏右一点"
+        }
+      ]
+    },
+    {
+      "id": "s_mv3fmud6g5cqx",
+      "map": "inferno",
+      "x": 50.84,
+      "y": 41.01,
+      "props": [
+        {
+          "id": "p_mv3fmud6fvraq",
+          "side": "T",
+          "type": "flash",
+          "name": "B包单向闪",
+          "imgs": [
+            "resource/props/闪道具-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "描点：中间窗户从左到右第三颗月牙的中间或偏下的位置"
+        }
+      ]
+    },
+    {
+      "id": "s_mvccsypk1fvck",
+      "map": "dust2",
+      "x": 49.28,
+      "y": 54.44,
+      "props": [
+        {
+          "id": "p_mvccsypk0g1qm",
+          "side": "CT",
+          "type": "flash",
+          "name": "匪口闪",
+          "imgs": [
+            "resource/props/匪口闪-1.jpg"
+          ],
+          "keys": [
+            "both"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "站位：贴紧柱子"
+        }
+      ]
+    },
+    {
+      "id": "s_mvccx2y63mqgt",
+      "map": "dust2",
+      "x": 45.32,
+      "y": 30.94,
+      "props": [
+        {
+          "id": "p_mvccx2y62xyep",
+          "side": "CT",
+          "type": "fire",
+          "name": "匪口火",
+          "imgs": [
+            "resource/props/匪口火-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [
+            "fwd"
+          ],
+          "note": "站位：离门3m左右，前进1.5m；\n描点：\n竖直方向为房顶与天线靠上四分之一处；\n水平方向为房顶最高天线处。"
+        }
+      ]
+    },
+    {
+      "id": "s_mvcd82nk54bsb",
+      "map": "dust2",
+      "x": 43.76,
+      "y": 76.98,
+      "props": [
+        {
+          "id": "p_mvcd82nk4uqrr",
+          "side": "T",
+          "type": "smoke",
+          "name": "中门满封烟",
+          "imgs": [
+            "resource/props/中门满封烟-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "站位：贴紧箱子；\n描点：锁的右侧两颗钉帽的下方钉帽"
+        }
+      ]
+    },
+    {
+      "id": "s_mvm18cde19g7y",
+      "map": "dust2",
+      "x": 57.79,
+      "y": 74.7,
+      "props": [
+        {
+          "id": "p_mvm18cde07hyg",
+          "side": "T",
+          "type": "flash",
+          "name": "A大辅助闪",
+          "imgs": [
+            "resource/props/A大辅助闪-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "站位：紧贴箱子与墙的夹角\n描点：左侧阴影与墙的交点"
+        }
+      ]
+    },
+    {
+      "id": "s_mvm1hqfj3d1gl",
+      "map": "dust2",
+      "x": 74.7,
+      "y": 47.6,
+      "props": [
+        {
+          "id": "p_mvm1hqfj26i2g",
+          "side": "T",
+          "type": "smoke",
+          "name": "A大过点烟",
+          "imgs": [
+            "resource/props/A大过点烟-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "站位：贴住蓝箱右侧定点；\n描点：与两个墙的夹角留出一个小正方形空隙，容错很大"
+        }
+      ]
+    },
+    {
+      "id": "s_mvm1unwr5o5lx",
+      "map": "dust2",
+      "x": 48.62,
+      "y": 42.21,
+      "props": [
+        {
+          "id": "p_mvm1unwr4pcdj",
+          "side": "T",
+          "type": "smoke",
+          "name": "警家烟",
+          "imgs": [
+            "resource/props/警家烟-1.png"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "站位：蹲下，贴住叉箱死角；\n描点：从左到右第五块木板的右侧钉子中央，容错很大"
+        },
+        {
+          "id": "p_mvm2zhmlaf0k8",
+          "side": "T",
+          "type": "fire",
+          "name": "中门凹槽火",
+          "imgs": [
+            "resource/props/中门凹槽火-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "站位：贴住叉箱死角；\n描点：墙面掉皮下端点竖直方向与叉箱交点的下方一点点"
+        },
+        {
+          "id": "p_mvm3390zb55if",
+          "side": "T",
+          "type": "flash",
+          "name": "中门闪",
+          "imgs": [
+            "resource/props/中门闪-1.jpg"
+          ],
+          "keys": [
+            "both"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "s_mvm23e677qnzg",
+      "map": "dust2",
+      "x": 82.43,
+      "y": 43.29,
+      "props": [
+        {
+          "id": "p_mvm23e676u0fw",
+          "side": "CT",
+          "type": "flash",
+          "name": "反清A门闪",
+          "imgs": [
+            "resource/props/闪道具-3.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "站位：贴住墙壁；\n无需背闪"
+        }
+      ]
+    },
+    {
+      "id": "s_mvm2pcsq9bknp",
+      "map": "dust2",
+      "x": 12.77,
+      "y": 40.53,
+      "props": [
+        {
+          "id": "p_mvm2pcsq8fnqu",
+          "side": "T",
+          "type": "flash",
+          "name": "假门单向闪",
+          "imgs": [
+            "resource/props/假门单向闪-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [
+            "fwd"
+          ],
+          "note": "站位：在进洞前移速拉满；\n描点：假门上端凸起的最高点与右侧竖直方向的交点"
+        }
+      ]
+    },
+    {
+      "id": "s_mvm3o6w3db92r",
+      "map": "dust2",
+      "x": 73.62,
+      "y": 54.08,
+      "props": [
+        {
+          "id": "p_mvm3o6w3ccmzc",
+          "side": "T",
+          "type": "flash",
+          "name": "A大进攻闪",
+          "imgs": [
+            "resource/props/A大进攻闪-1.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "站位：贴住蓝色油桶；"
+        }
+      ]
+    },
+    {
+      "id": "s_mvm3yx7zfqpwz",
+      "map": "dust2",
+      "x": 90.17,
+      "y": 43.17,
+      "props": [
+        {
+          "id": "p_mvm3yx7zeza5h",
+          "side": "T",
+          "type": "fire",
+          "name": "二箱火",
+          "imgs": [
+            "resource/props/二箱火-3.jpg",
+            "resource/props/二箱火-4.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "站位：咖啡门锁的左侧；\n描点：门锁左侧"
+        }
+      ]
+    },
+    {
+      "id": "s_mvm46om3h1d8k",
+      "map": "dust2",
+      "x": 76.86,
+      "y": 19.18,
+      "props": [
+        {
+          "id": "p_mvm46om3gbw3d",
+          "side": "CT",
+          "type": "smoke",
+          "name": "A门烟",
+          "imgs": [
+            "resource/props/A门烟-1.png"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": "站位：蹲下，靠墙；\n描点：窗户右侧污渍右侧一点"
+        }
+      ]
+    },
+    {
+      "id": "s_mvm4egz9jrp1u",
+      "map": "dust2",
+      "x": 76.38,
+      "y": 20.74,
+      "props": [
+        {
+          "id": "p_mvm4egz9ikzkh",
+          "side": "CT",
+          "type": "smoke",
+          "name": "A大隔断烟",
+          "imgs": [
+            "resource/props/A大隔断烟-2.jpg"
+          ],
+          "keys": [
+            "left"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": "站位：贴住墙的凸起左侧；\n描点：卫星锅的底部端点；"
+        }
+      ]
+    },
+    {
+      "id": "s_mvm4gmqslaqig",
+      "map": "dust2",
+      "x": 74.58,
+      "y": 27.22,
+      "props": [
+        {
+          "id": "p_mvm4gmqsklha0",
+          "side": "CT",
+          "type": "flash",
+          "name": "A大反清闪",
+          "imgs": [
+            "resource/props/A大反清闪-1.jpg"
+          ],
+          "keys": [
+            "both"
+          ],
+          "toss": [
+            "nojump"
+          ],
+          "move": [],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "s_mvm4nluxnd73f",
+      "map": "dust2",
+      "x": 76.38,
+      "y": 17.39,
+      "props": [
+        {
+          "id": "p_mvm4nluxmoiqo",
+          "side": "CT",
+          "type": "flash",
+          "name": "A大反清闪",
+          "imgs": [
+            "resource/props/A大反清闪-2.jpg"
+          ],
+          "keys": [
+            "both"
+          ],
+          "toss": [
+            "jump"
+          ],
+          "move": [],
+          "note": ""
+        }
+      ]
+    }
+  ]
+}

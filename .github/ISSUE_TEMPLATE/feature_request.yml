@@ -1,0 +1,34 @@
+name: 功能建议
+description: 想要的新功能、交互改进、数据格式扩展
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: 想解决什么问题
+      description: 先说场景，再说方案。这样更容易判断值不值得做。
+      placeholder: 例如：想按「道具类型」筛选点位，练烟的时候只想看烟雾弹。
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: 你设想的做法
+      placeholder: 右侧阵营栏下面再加一组 烟/闪/火/雷 的分段按钮，和阵营筛选可叠加。
+    validations:
+      required: false
+  - type: textarea
+    id: alt
+    attributes:
+      label: 备选方案 / 现在怎么凑合
+    validations:
+      required: false
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: 影响范围
+      options:
+        - label: 只在前端（index.html / assets/）
+        - label: 需要改服务端（server.py）
+        - label: 需要改数据格式（data.json 结构或 meta.version）
