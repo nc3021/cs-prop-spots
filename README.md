@@ -1,13 +1,12 @@
 <p align="center">
-  <img src="docs/screenshots/theme-toxic.jpg" alt="CS2 Prop Spots — Dust II overview in the toxic theme" width="100%">
+  <img src="docs/screenshots/theme-toxic.jpg" alt="CS2 道具点位库 —— 生化禁区主题下的沙二总览" width="100%">
 </p>
 
-<h1 align="center">CS2 Prop Spots</h1>
+<h1 align="center">CS2 道具点位库</h1>
 
 <p align="center">
-  A personal library for CS2 utility line-ups. Pin standing positions on a radar image, attach smokes, flashes,<br>
-  molotovs and grenades to each position with aim screenshots, throw inputs and notes. Data is stored in a JSON<br>
-  file inside the project folder.
+  面向个人的 CS2 道具点位管理工具。在雷达图上标注站位，为每个站位挂载烟、闪、火、雷，<br>
+  记录描点截图、投掷方式与站位说明。数据保存在项目目录的 JSON 文件中。
 </p>
 
 <p align="center">
@@ -18,78 +17,78 @@
 </p>
 
 <p align="center">
-  English · <a href="README.zh-CN.md">简体中文</a>
+  简体中文 · <a href="README.en.md">English</a>
 </p>
 
 ---
 
-## Overview
+## 项目概述
 
-The tool manages personal CS2 utility spots and addresses three concrete problems: spot data scattered across recordings and screenshots with no way to look it up by map; several utilities sharing one standing position but recorded separately; and no connection between an aim screenshot, the throw inputs, and the note describing the position.
+本工具管理个人的 CS2 道具点位，对应三类实际需求：点位信息散落在录像与截图里，难以按图检索；同一站位上的多个道具缺少统一记录；描点图、投掷方式与站位说明三者之间没有对应关系。
 
-It is a single-page application written in plain HTML, CSS and JavaScript, paired with a local server that uses only the Python standard library. The server serves static files, reads and writes `data.json`, and stores uploaded screenshots. The project has no framework, no build step, no npm packages, no CDN assets and no account system; all data stays on the local disk.
+实现形态是原生 HTML、CSS、JavaScript 编写的单页应用，配合一个只依赖 Python 标准库的本地服务。服务负责三件事：发送静态文件、读写 `data.json`、保存上传的截图。项目不使用框架、不需要构建、不依赖 npm 与 CDN，也没有账号体系，全部数据保存在本机磁盘。
 
-The repository includes example data for 11 maps, 38 spots and 52 props (17 smokes, 21 flashes, 11 molotovs, 3 grenades) referencing 63 aim screenshots. It can be used as-is, or cleared and replaced with your own.
+仓库自带 11 张地图、38 个点位、52 个道具的示例数据（烟 17、闪 21、火 11、雷 3），共引用 63 张描点截图。这份数据可以直接作为内容库使用，也可以清空后录入自己的点位。
 
-Scope is deliberately limited to one user on one machine: no multi-user access, no cloud sync, no merge logic.
+设计范围限定为单人单机：不提供多用户访问、云端同步与冲突合并。
 
-## Screenshots
+## 界面预览
 
-**Viewer**: the left column lists every prop on that standing position together with its note, the right side shows the aim screenshot, and the footer carries the usage inputs.
+**查看道具**：左侧列出该站位下的全部道具与站位说明，右侧是描点图，底部显示使用方式。
 
-![viewer](docs/screenshots/viewer.jpg)
+![查看器](docs/screenshots/viewer.jpg)
 
-**Editor**: a docked panel on the right, with the map left clickable.
+**编辑点位**：右侧停靠面板，地图保持可点选状态。
 
-![editor](docs/screenshots/editor.jpg)
+![编辑器](docs/screenshots/editor.jpg)
 
-**Search**: matching markers stay highlighted, the rest are dimmed.
+**按名称搜索**：命中的标记保持高亮，其余降低不透明度。
 
-![search](docs/screenshots/search.jpg)
+![搜索](docs/screenshots/search.jpg)
 
-**Spot list for the current map**
+**当前地图的点位清单**
 
-![list](docs/screenshots/list.jpg)
+![清单](docs/screenshots/list.jpg)
 
-## Themes
+## 主题
 
-Seven dark themes ship with the project. They are selected from the theme button in the toolbar (hover to expand), stored in `localStorage`, and cycled with `T`. Every image below shows the same map and the same set of spots under a different theme.
+内置 7 套深色主题，通过工具栏的「主题」按钮悬停展开切换，选择保存在 `localStorage`，按 `T` 循环切换。下方每张图对应同一张地图、同一批点位在不同主题下的效果。
 
-| **Aurum** `aurum` | **Neon** `neon` |
+| **鎏金夜航** `aurum` | **霓虹废墟** `neon` |
 |:--:|:--:|
 | ![aurum](docs/screenshots/theme-aurum.jpg) | ![neon](docs/screenshots/theme-neon.jpg) |
-| **Verdant** `verdant` | **Magma** `magma` |
+| **密林潜行** `verdant` | **熔岩裂谷** `magma` |
 | ![verdant](docs/screenshots/theme-verdant.jpg) | ![magma](docs/screenshots/theme-magma.jpg) |
-| **Glacier** `glacier` | **Violet** `violet` |
+| **极地冰川** `glacier` | **紫电风暴** `violet` |
 | ![glacier](docs/screenshots/theme-glacier.jpg) | ![violet](docs/screenshots/theme-violet.jpg) |
-| **Toxic** `toxic` | **Theme dropdown** |
-| ![toxic](docs/screenshots/theme-toxic.jpg) | ![theme menu](docs/screenshots/theme-menu.jpg) |
+| **生化禁区** `toxic` | **主题下拉列表** |
+| ![toxic](docs/screenshots/theme-toxic.jpg) | ![主题菜单](docs/screenshots/theme-menu.jpg) |
 
-Side colours are defined per theme: the T side always uses a yellow hue, the CT side always uses a cool hue outside the yellow range, so the two sides remain distinguishable in every theme.
+每套主题的阵营色独立定义：T 方固定使用黄色系，CT 方使用黄色系以外的冷色，保证两方在任何主题下都可区分。
 
-## Features
+## 功能
 
-**Radar placement.** Coordinates are stored as percentages of the map image, so they are independent of zoom level and screen resolution. The map supports wheel zoom and drag panning.
+**雷达图标注。** 坐标以地图图片的百分比存储，与缩放级别和屏幕分辨率无关。地图支持滚轮缩放与拖拽平移。
 
-**Spots and props are separate.** One standing position can hold any number of props, the marker shows how many, and the viewer switches between them on the left. Utilities thrown from the same spot do not need duplicate markers.
+**站位与道具分离。** 一个站位可挂载多个道具，标记右上角显示道具数量，查看器左侧按道具切换，无需为同一位置的多个道具重复打点。
 
-**Structured usage.** Each prop records key (left, right, both), throw (jump, no-jump) and movement (forward, back, left, right) as three independent fields.
+**使用方式结构化。** 每个道具分别记录按键（左键、右键、双键）、投掷（跳投、非跳投）、移动（前进、后退、左移、右移），三项独立可选。
 
-**Aim screenshots.** Each prop can hold any number of screenshots. The local server writes them to `resource/props/` and names them `<prop name>-<n>`, incrementing to avoid collisions. The viewer supports arrows, dots, drag and double-click to fullscreen.
+**描点截图。** 每个道具可挂载任意数量的截图，由本地服务写入 `resource/props/`，按「道具名-序号」自动命名，重名自动递增序号。查看器支持箭头、圆点、拖动与双击全屏。
 
-**Side labels and filtering.** Every prop is T, CT or both; marker colour follows the side, and the right rail can filter the current map to a single side.
+**阵营标注与筛选。** 道具标记为 T、CT 或两者共用，标记颜色随阵营变化，右侧栏可将当前地图筛为单方视角。
 
-**Label layout without collisions.** Name labels are laid out in screen space: directions that would overlap another marker or an existing label are discarded first, then the direction facing the nearest map edge is chosen from the remainder.
+**点位名标签自动避让。** 标签在屏幕坐标中排版，先排除与其它标记或已放置标签重叠的方向，再在剩余方向中选择朝向最近地图边的一侧。
 
-**Full-field search.** Matching covers prop names, notes and usage text. Non-matching markers are dimmed instead of hidden, so the surrounding context is preserved.
+**全字段搜索。** 匹配范围包含道具名称、感想与使用方式；未命中的标记降低不透明度而非隐藏，保留周边参照。
 
-**Image clean-up.** Lists files in `resource/props/` that no prop references any more and deletes them after a confirmation.
+**图片清理。** 扫描 `resource/props/` 中已无道具引用的文件，二次确认后删除。
 
-**Backup before write.** Every save of `data.json` keeps the previous version as `data.json.bak`.
+**写入前备份。** 每次保存 `data.json` 时，上一版本自动保留为 `data.json.bak`。
 
-## Running
+## 运行
 
-Requirements: Python 3.8 or newer (standard library only), and any Chromium-based browser.
+环境要求：Python 3.8 或更高版本（仅使用标准库），Chromium 内核浏览器。
 
 ```bash
 git clone https://github.com/nc3021/cs-prop-spots.git
@@ -97,41 +96,41 @@ cd cs-prop-spots
 python server.py
 ```
 
-Open <http://127.0.0.1:8778/>.
+访问 <http://127.0.0.1:8778/>。
 
-The server listens on `127.0.0.1` only, on a fixed port of 8778. Data writes and image uploads both go through it, so the page must be opened from that address. If the port is already in use the server exits with code 0, which makes it safe to start repeatedly or to add to a login item.
+服务只监听 `127.0.0.1`，端口固定为 8778。数据写入与图片上传均经由该服务完成，因此页面需要通过上述地址访问。端口被占用时服务直接退出（退出码 0），可重复启动，也可加入开机启动项。
 
-A windowless launcher is provided for Windows:
+Windows 提供了无窗口启动脚本：
 
 ```bat
 start-server.bat
 ```
 
-Edit the `set "PY=..."` line at the top of the file to point at your own `python.exe` before using it.
+使用前需修改文件顶部的 `set "PY=..."`，将其指向本机的 `python.exe`。
 
-## Adding a spot
+## 添加点位
 
-1. Press `N`, or click **＋ 添加道具点位** in the toolbar.
-2. Choose the map in the left rail.
-3. Click **在地图上点选**, then click the standing position on the map. Percentage coordinates are filled in automatically.
-4. Fill in each prop: type (smoke, flash, molotov, grenade), name, side, and the key / throw / movement rows.
-5. Drag screenshots into the image strip or click to browse. Files are written to `resource/props/` immediately.
-6. Click **保存点位** to write `data.json`; the previous version is kept as `data.json.bak`.
+1. 按 `N`，或点击工具栏的「＋ 添加道具点位」。
+2. 在左侧地图栏选择地图。
+3. 点击「在地图上点选」，在地图上点击站位坐标，百分比数值自动填入。
+4. 填写道具类型（烟、闪、火、雷）、名称、阵营，以及按键、投掷、移动三项。
+5. 将截图拖入图片区或点击上传，文件即时写入 `resource/props/`。
+6. 点击「保存点位」写入 `data.json`，上一版本保留为 `data.json.bak`。
 
-To edit, click a marker to open the viewer and click **编辑**. Deleting a spot is done from the viewer footer and also keeps a backup.
+修改点位：点击标记打开查看器，点击「编辑」。删除点位在查看器底部，删除前同样会保留备份。
 
-## Keyboard shortcuts
+## 快捷键
 
-| Key | Action |
+| 按键 | 作用 |
 |---|---|
-| `/` | Focus the search box |
-| `N` | New spot |
-| `T` | Switch to the next theme |
-| `Esc` | Close the topmost layer (fullscreen image → theme menu → picker → viewer → editor → list) |
+| `/` | 聚焦搜索框 |
+| `N` | 新建点位 |
+| `T` | 切换到下一套主题 |
+| `Esc` | 逐层关闭浮层（全屏大图 → 主题菜单 → 选图 → 查看器 → 编辑面板 → 清单） |
 
-## Data format
+## 数据格式
 
-`data.json` is the only data file. The server writes it with two-space indentation, which keeps it editable by hand and readable in diffs.
+`data.json` 是唯一的数据文件，服务端写回时统一使用两空格缩进，便于手工编辑与版本对比。
 
 ```json
 {
@@ -148,11 +147,11 @@ To edit, click a marker to open the viewer and click **编辑**. Deleting a spot
           "id": "p_muf7pyb509eid",
           "side": "T",
           "type": "smoke",
-          "name": "B door smoke",
+          "name": "B门烟",
           "keys": ["left"],
           "toss": ["nojump"],
           "move": [],
-          "note": "Aim at the small window at the top of the pillar on the left, two fifths above the upper line, flush against it.",
+          "note": "在左侧房顶柱子尖的小窗口里，在右上侧横线的上五分之二处，需要挨着线",
           "imgs": ["resource/props/B门烟-2.jpg"]
         }
       ]
@@ -161,89 +160,89 @@ To edit, click a marker to open the viewer and click **编辑**. Deleting a spot
 }
 ```
 
-| Field | Meaning |
+| 字段 | 含义 |
 |---|---|
-| `spots[].x` / `y` | Percentage coordinates (0–100) of the map image, resolution independent |
-| `props[].side` | `T`, `CT` or `both` |
-| `props[].type` | `smoke`, `flash`, `fire`, `he` |
-| `props[].keys` | `left`, `right`, `both` |
-| `props[].toss` | `jump`, `nojump` |
-| `props[].move` | any of `fwd`, `back`, `left`, `right` |
-| `props[].imgs` | Image paths relative to the project root |
-| `mapOrder` | Left rail ordering; a UI preference, not part of the spot data |
+| `spots[].x` / `y` | 地图图片的百分比坐标（0–100），与分辨率无关 |
+| `props[].side` | `T`、`CT`、`both`（共用） |
+| `props[].type` | `smoke` 烟、`flash` 闪、`fire` 火、`he` 雷 |
+| `props[].keys` | `left` 左键、`right` 右键、`both` 双键 |
+| `props[].toss` | `jump` 跳投、`nojump` 非跳投 |
+| `props[].move` | `fwd`、`back`、`left`、`right`，可多选 |
+| `props[].imgs` | 相对项目根目录的图片路径 |
+| `mapOrder` | 左侧地图栏顺序，属于界面偏好，不属于点位数据 |
 
-A spot's side is derived from its props: all T means a T spot, all CT means a CT spot, and a mix is labelled as shared.
+站位的阵营由其下道具推导：全部为 T 时记为 T 点，全部为 CT 时记为 CT 点，两者都存在时标记为共用。
 
-## Local server API
+## 本地服务接口
 
-`server.py` exposes six endpoints, all bound to the loopback interface:
+`server.py` 提供六个接口，全部只对本机开放：
 
-| Method | Path | Purpose |
+| 方法 | 路径 | 说明 |
 |---|---|---|
-| `GET` | `/api/ping` | Availability probe; returns `ok`, `dataExists`, `propsDir` |
-| `GET` | `/api/data` | The raw contents of `data.json` |
-| `POST` | `/api/data` | Validate, normalise and atomically write (`os.replace`); the previous version becomes `data.json.bak` |
-| `GET` | `/api/images` | File names currently in `resource/props/` |
-| `POST` | `/api/upload` | Raw image bytes, file name in the `X-Filename` header, 32 MB limit |
-| `POST` | `/api/images/delete` | `{"names":[...]}`; plain file names only, path traversal rejected |
+| `GET` | `/api/ping` | 可用性探测，返回 `ok`、`dataExists`、`propsDir` |
+| `GET` | `/api/data` | 返回 `data.json` 原始内容 |
+| `POST` | `/api/data` | 校验并规范化后原子写入（`os.replace`），旧版本保留为 `data.json.bak` |
+| `GET` | `/api/images` | 列出 `resource/props/` 下的图片文件名 |
+| `POST` | `/api/upload` | 请求体为图片原始字节，文件名通过 `X-Filename` 头传递，上限 32 MB |
+| `POST` | `/api/images/delete` | `{"names":[...]}`，仅接受纯文件名，拒绝路径穿越 |
 
-Write requests check `Origin` and accept only `127.0.0.1:8778` and `localhost:8778`. Every other path is served as a static file. All responses carry `Cache-Control: no-store`, so a refresh is enough to see file changes.
+写操作会校验 `Origin`，只接受 `127.0.0.1:8778` 与 `localhost:8778`。其余路径按静态文件返回。所有响应都带 `Cache-Control: no-store`，修改文件后刷新页面即可看到结果。
 
-## Project layout
+## 目录结构
 
 ```
-index.html              the only page
-assets/theme.css        colour tokens, background FX layer, 7 dark themes
-assets/style.css        layout and components, all values from tokens
-assets/app.js           all behaviour, no framework, no build
-server.py               local server: static files + JSON/image persistence
-start-server.bat        windowless launcher for Windows
-data.json               the dataset (spots, props, map order)
-resource/maps/          11 radar images
-resource/props/         aim screenshots
-docs/screenshots/       images used by these READMEs
-backup/                 pre-change copies, git-ignored
+index.html              唯一页面
+assets/theme.css        颜色令牌、背景视效层、7 套深色主题
+assets/style.css        布局与组件样式，全部使用令牌
+assets/app.js           全部逻辑，无框架无构建
+server.py               本地服务：静态文件 + JSON / 图片持久化
+start-server.bat        Windows 无窗口启动脚本
+data.json               数据集（点位、道具、地图顺序）
+resource/maps/          11 张地图雷达图
+resource/props/         描点截图
+docs/screenshots/       README 使用的演示图
+backup/                 改动前副本，已在 .gitignore 中忽略
 ```
 
-## Known limitations
+## 已知限制
 
-- **Single user, single machine.** One `data.json`, no multi-user access, no sync, no merge. Copy the file to move between machines and avoid editing on both at once.
-- **Map list lives in code.** Adding a map means adding an entry to `MAPS` in `assets/app.js` and dropping the radar image into `resource/maps/`.
-- **Cache busting is manual.** After editing CSS or JavaScript, update the three `?v=` query strings in `index.html` and the `#statVer` label in the status bar.
-- **`start-server.bat` is Windows-only.** The application itself is cross-platform; the script and the windowless launch are not.
-- **Radar images are outside the MIT license.** They belong to Valve; see the disclaimer.
+- **单人单机。** 一个 `data.json`，无多用户、无同步、无冲突合并。跨机器使用时拷贝该文件，避免两端同时编辑。
+- **地图列表写在代码中。** 新增地图需在 `assets/app.js` 的 `MAPS` 数组添加条目，并将雷达图放入 `resource/maps/`。
+- **缓存需要手动失效。** 修改 CSS 或 JavaScript 后，需同步更新 `index.html` 中的三处 `?v=` 与状态栏 `#statVer` 文本。
+- **`start-server.bat` 面向 Windows。** 应用本身跨平台，该脚本与无窗口启动方式仅适用于 Windows。
+- **雷达图不在 MIT 协议范围内。** 版权归 Valve，详见免责声明。
 
-## FAQ
+## 常见问题
 
-**How do I move data between machines?**
-Copy `data.json` and the `resource/props/` directory. There is no automatic sync, and editing on two machines at once produces inconsistent state.
+**如何在多台机器之间同步数据？**
+拷贝 `data.json` 与 `resource/props/` 目录。项目不含自动同步，两端同时编辑会产生不一致。
 
-**I deleted a spot by mistake.**
-`data.json.bak` holds the previous version. Stop the server, then copy it back over `data.json`.
+**误删点位如何处理？**
+`data.json.bak` 保存上一个版本。停止服务后，将 `.bak` 覆盖回 `data.json`。
 
-**Why not a database?**
-The dataset is small and maintained by hand. A plain text file can be edited, diffed and versioned without migration scripts.
+**为什么不使用数据库？**
+数据量小且以人工整理为主，纯文本文件可以直接编辑、对比与版本管理，无需迁移脚本。
 
-**How are screenshot files named?**
-Uploads are named `<prop name>-<n>`, where `n` is the lowest free number, so existing files are never overwritten. Characters that are illegal in file names are replaced with underscores.
+**描点图的命名规则是什么？**
+上传时按「道具名-序号」生成文件名，序号取当前可用的最小值，不覆盖已有文件。文件名中的非法字符替换为下划线。
 
-**How do I add or replace a map?**
-Add an entry to `MAPS` in `assets/app.js` (id, Chinese and English names, file name, native size) and put the radar image in `resource/maps/`. Coordinates are stored as percentages, so a map with the same aspect ratio needs no changes to existing spots.
+**如何新增或替换地图？**
+在 `assets/app.js` 的 `MAPS` 中增加条目（id、中英文名、文件名、原始尺寸），将雷达图放入 `resource/maps/`。坐标按百分比存储，更换同比例的地图无需调整点位。
 
-## Contributing
+## 参与贡献
 
-Issues and pull requests are welcome. For anything other than a typo fix, please open an issue to agree on the approach before writing code.
+欢迎提交 Issue 与 Pull Request。除笔误修正外，建议先开 Issue 确认方案，再提交代码。
 
-- [Report a bug](https://github.com/nc3021/cs-prop-spots/issues/new?template=bug_report.yml)
-- [Request a feature](https://github.com/nc3021/cs-prop-spots/issues/new?template=feature_request.yml)
-- [Browse open issues](https://github.com/nc3021/cs-prop-spots/issues)
+- [报告 Bug](https://github.com/nc3021/cs-prop-spots/issues/new?template=bug_report.yml)
+- [提功能建议](https://github.com/nc3021/cs-prop-spots/issues/new?template=feature_request.yml)
+- [查看已有 Issue](https://github.com/nc3021/cs-prop-spots/issues)
 
-The project stays dependency-free: no frameworks, no npm packages, no CDN assets. UI text is Simplified Chinese; code comments use the same language.
+项目保持零依赖：不引入框架、npm 包与 CDN 资源。界面文案使用简体中文，代码注释保持同一语言。
 
-## License
+## 开源协议
 
 [MIT](LICENSE) © 2026 nc3021
 
-## Disclaimer
+## 免责声明
 
-Counter-Strike 2, its map radar images and related assets are trademarks and copyright of Valve Corporation. This is a non-commercial personal tool; the MIT license covers the code only. The map images in `resource/maps/` and the game screenshots in `resource/props/` are included as personal reference and are not relicensed. If you use this project publicly, replace those assets or confirm that your use qualifies as fair use in your jurisdiction.
+Counter-Strike 2 及其地图雷达图、相关素材的商标与版权归 Valve Corporation 所有。本项目为非商业的个人工具，MIT 协议仅覆盖代码。`resource/maps/` 中的地图图片与 `resource/props/` 中的游戏截图作为个人参考一并附带，不构成再授权。如需用于公开服务，请替换上述素材，或确认使用方式在所在司法辖区属于合理使用。
